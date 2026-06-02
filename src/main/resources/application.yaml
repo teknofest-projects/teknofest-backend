@@ -27,3 +27,12 @@ springdoc:
   api-docs:
     path: /v3/api-docs
     enabled: true
+
+application:
+  security:
+    jwt:
+      secret-key: ${JWT_SECRET_KEY}
+      access-token:
+        expiration: ${ACCESS_TOKEN_EXPIRATION}
+      refresh-token:
+        expiration: ${REFRESH_TOKEN_EXPIRATION}
