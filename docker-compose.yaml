@@ -1,0 +1,15 @@
+services:
+  postgres:
+    image: postgres:15
+    container_name: teknofest-database
+    environment:
+      POSTGRES_USER: teknofest
+      POSTGRES_PASSWORD: teknofest
+      POSTGRES_DB: teknofest
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+volumes:
+  pgdata:
