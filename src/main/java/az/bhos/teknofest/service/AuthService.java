@@ -1,0 +1,11 @@
+package az.bhos.teknofest.service;
+
+import az.bhos.teknofest.model.dto.auth.AuthResponseDto;
+import az.bhos.teknofest.model.dto.auth.LoginRequestDto;
+import az.bhos.teknofest.model.dto.auth.RegisterRequestDto;
+import az.bhos.teknofest.model.dto.shared.SuccessResponse;
+
+public interface AuthService {
+    SuccessResponse<AuthResponseDto> register(RegisterRequestDto userRegisterRequestDto);
+    SuccessResponse<AuthResponseDto> login(LoginRequestDto userLoginRequestDto);
+}
