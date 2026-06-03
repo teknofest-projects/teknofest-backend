@@ -2,6 +2,7 @@ package az.bhos.teknofest.model.dto.auth;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Pattern;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -14,15 +15,12 @@ import lombok.experimental.FieldDefaults;
 @NoArgsConstructor
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class RegisterRequestDto {
-
-    @NotBlank(message = "Username cannot be empty!")
-    String username;
+public class VerifyRequestDto {
 
     @Email(message = "Email is not valid!")
     @NotBlank(message = "Email cannot be empty!")
     String email;
 
-    @NotBlank(message = "Password cannot be empty!")
-    String password;
+    @Pattern(regexp = "^[0-9]{6}$", message = "Code must be exactly 6 digits!")
+    String code;
 }

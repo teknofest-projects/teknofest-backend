@@ -3,6 +3,7 @@ package az.bhos.teknofest.controller;
 import az.bhos.teknofest.model.dto.auth.AuthResponseDto;
 import az.bhos.teknofest.model.dto.auth.LoginRequestDto;
 import az.bhos.teknofest.model.dto.auth.RegisterRequestDto;
+import az.bhos.teknofest.model.dto.auth.VerifyRequestDto;
 import az.bhos.teknofest.model.dto.shared.SuccessResponse;
 import az.bhos.teknofest.service.AuthService;
 import jakarta.validation.Valid;
@@ -23,6 +24,11 @@ public class AuthController {
     @PostMapping("/register")
     public ResponseEntity<SuccessResponse<AuthResponseDto>> register(@Valid @RequestBody RegisterRequestDto registerRequestDto) {
         return ResponseEntity.ok(authService.register(registerRequestDto));
+    }
+
+    @PostMapping("/verify")
+    public ResponseEntity<SuccessResponse<AuthResponseDto>> verify(@Valid @RequestBody VerifyRequestDto verifyRequestDto) {
+        return ResponseEntity.ok(authService.verify(verifyRequestDto));
     }
 
     @PostMapping("/login")
