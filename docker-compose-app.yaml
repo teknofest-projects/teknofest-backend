@@ -2,6 +2,10 @@ services:
 
   postgres:
     image: postgres:17
+    environment:
+      POSTGRES_DB: teknofest
+      POSTGRES_USER: teknofest
+      POSTGRES_PASSWORD: teknofest
 
     volumes:
       - postgres_data:/var/lib/postgresql/data

@@ -17,6 +17,19 @@ spring:
     enabled: true
     change-log: classpath:db/changelog/master.yaml
 
+  mail:
+    host: smtp-relay.brevo.com
+    port: 587
+    username: ${NO_REPLY_BREVO_USERNAME}
+    password: ${NO_REPLY_BREVO_PASSWORD}
+    protocol: smtp
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+
 server:
   port: ${PORT:8080}
 
@@ -36,3 +49,10 @@ application:
         expiration: ${ACCESS_TOKEN_EXPIRATION}
       refresh-token:
         expiration: ${REFRESH_TOKEN_EXPIRATION}
+
+  frontend:
+    base-url: ${FRONTEND_BASE_URL}
+
+app:
+  mail:
+    from: ${NO_REPLY_SHOPERY_USERNAME}

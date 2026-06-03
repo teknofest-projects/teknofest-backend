@@ -9,11 +9,13 @@ import az.bhos.teknofest.handler.exception.ResourceNotFoundException;
 import az.bhos.teknofest.model.dto.auth.AuthResponseDto;
 import az.bhos.teknofest.model.dto.auth.LoginRequestDto;
 import az.bhos.teknofest.model.dto.auth.RegisterRequestDto;
+import az.bhos.teknofest.model.dto.auth.VerifyRequestDto;
 import az.bhos.teknofest.model.dto.shared.SuccessResponse;
 import az.bhos.teknofest.model.entity.User;
 import az.bhos.teknofest.repository.UserRepository;
 import az.bhos.teknofest.security.JwtService;
 import az.bhos.teknofest.service.AuthService;
+import az.bhos.teknofest.service.RedisService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -27,6 +29,7 @@ import org.springframework.stereotype.Service;
 public class AuthServiceImpl implements AuthService {
 
     private final JwtService jwtService;
+    private final RedisService redisService;
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
     private final AuthenticationManager authenticationManager;
@@ -43,7 +46,6 @@ public class AuthServiceImpl implements AuthService {
         String password = passwordEncoder.encode(registerRequestDto.getPassword());
 
         User user = User.builder()
-                .name(registerRequestDto.getName())
                 .email(email)
                 .password(password)
                 .build();
@@ -63,6 +65,11 @@ public class AuthServiceImpl implements AuthService {
         authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(email, loginRequestDto.getPassword()));
 
         return SuccessResponse.of(generateAuthResponse(user), "login successfully!");
+    }
+
+    @Override
+    public SuccessResponse<AuthResponseDto> verify(VerifyRequestDto verifyRequestDto) {
+        return null;
     }
 
     private AuthResponseDto generateAuthResponse(User user) {
