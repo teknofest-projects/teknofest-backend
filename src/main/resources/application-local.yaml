@@ -4,6 +4,13 @@ spring:
     username: ${DB_USERNAME:teknofest}
     password: ${DB_PASSWORD:teknofest}
 
+  data:
+    redis:
+      host: ${REDIS_HOST:localhost}
+      port: ${REDIS_PORT:6379}
+      ssl:
+        enabled: false
+
   jpa:
     show-sql: true
     properties:

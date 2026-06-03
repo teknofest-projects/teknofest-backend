@@ -18,10 +18,10 @@ spring:
     change-log: classpath:db/changelog/master.yaml
 
   mail:
-    host: smtp-relay.brevo.com
+    host: smtp.gmail.com
     port: 587
-    username: ${NO_REPLY_BREVO_USERNAME}
-    password: ${NO_REPLY_BREVO_PASSWORD}
+    username: ${NO_REPLY_EMAIL}
+    password: ${NO_REPLY_EMAIL_PASSWORD}
     protocol: smtp
     properties:
       mail:
@@ -51,8 +51,4 @@ application:
         expiration: ${REFRESH_TOKEN_EXPIRATION}
 
   frontend:
-    base-url: ${FRONTEND_BASE_URL}
-
-app:
-  mail:
-    from: ${NO_REPLY_SHOPERY_USERNAME}
+    base-url: ${FRONTEND_BASE_URL:http://localhost:5173}
