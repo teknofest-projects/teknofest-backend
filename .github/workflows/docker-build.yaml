@@ -25,3 +25,5 @@ jobs:
           context: .
           push: true
           tags: jahangiraze/teknofest-backend:latest
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
