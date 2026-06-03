@@ -62,7 +62,7 @@ public class AuthServiceImpl implements AuthService {
 
         authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(email, loginRequestDto.getPassword()));
 
-        return SuccessResponse.of(generateAuthResponse(user), "login successful!");
+        return SuccessResponse.of(generateAuthResponse(user), "login successfully!");
     }
 
     private AuthResponseDto generateAuthResponse(User user) {
