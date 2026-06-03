@@ -1,0 +1,22 @@
+services:
+
+  postgres:
+    image: postgres:17
+
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  teknofest-backend:
+    image: jahangiraze/teknofest-backend:latest
+
+    depends_on:
+      - postgres
+
+    ports:
+      - "8080:8080"
+
+    env_file:
+      - .env
+
+volumes:
+  postgres_data:
