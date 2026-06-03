@@ -2,6 +2,7 @@ package az.bhos.teknofest.handler;
 
 import az.bhos.teknofest.handler.exception.ApplicationException;
 import az.bhos.teknofest.handler.exception.ExternalServiceException;
+import az.bhos.teknofest.handler.exception.InvalidCredentialsException;
 import az.bhos.teknofest.handler.exception.ResourceNotFoundException;
 import az.bhos.teknofest.model.dto.shared.ErrorResponse;
 import jakarta.servlet.http.HttpServletRequest;
@@ -47,6 +48,12 @@ public class GlobalExceptionHandler {
     public ResponseEntity<ErrorResponse> handleExternalService(ExternalServiceException ex, HttpServletRequest request) {
         log.error("External service error: {}", ex.getMessage(), ex);
         return buildErrorResponse(ex, HttpStatus.SERVICE_UNAVAILABLE, request);
+    }
+
+    @ExceptionHandler(InvalidCredentialsException.class)
+    public ResponseEntity<ErrorResponse> handleUnauthorized(Exception ex, HttpServletRequest request) {
+        log.debug("Authentication failed: {}", ex.getMessage());
+        return buildErrorResponse(ex, HttpStatus.UNAUTHORIZED, request);
     }
 
     @ExceptionHandler(HttpMessageNotReadableException.class)

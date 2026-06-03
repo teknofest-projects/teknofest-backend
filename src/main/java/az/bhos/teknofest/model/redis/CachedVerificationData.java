@@ -30,6 +30,4 @@ public class CachedVerificationData {
     int attemptCount;
 
     LocalDateTime expiryDate;
-
-    LocalDateTime codeLastSentAt;
 }
