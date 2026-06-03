@@ -22,7 +22,7 @@ public class AuthController {
     private final AuthService authService;
 
     @PostMapping("/register")
-    public ResponseEntity<SuccessResponse<AuthResponseDto>> register(@Valid @RequestBody RegisterRequestDto registerRequestDto) {
+    public ResponseEntity<SuccessResponse<Void>> register(@Valid @RequestBody RegisterRequestDto registerRequestDto) {
         return ResponseEntity.ok(authService.register(registerRequestDto));
     }
 
