@@ -7,5 +7,4 @@ public interface RedisService {
     void set(String key, Object value, Duration ttl);
     <T> Optional<T> get(String key, Class<T> clazz);
     void delete(String key);
-    boolean setIfAbsent(String key, Object value, Duration ttl);
 }

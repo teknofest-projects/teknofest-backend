@@ -45,17 +45,6 @@ public class RedisServiceImpl implements RedisService {
     }
 
     @Override
-    public boolean setIfAbsent(String key, Object value, Duration ttl) {
-        try {
-            String json = objectMapper.writeValueAsString(value);
-            Boolean result = redisTemplate.opsForValue().setIfAbsent(key, json, ttl);
-            return Boolean.TRUE.equals(result);
-        } catch (Exception e) {
-            throw new ExternalServiceException("Redis SET_IF_ABSENT failed for key: " + key, e);
-        }
-    }
-
-    @Override
     public void delete(String key) {
         try {
             redisTemplate.delete(key);
