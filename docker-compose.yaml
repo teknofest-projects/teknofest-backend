@@ -3,9 +3,9 @@ services:
     image: postgres:15
     container_name: teknofest-database
     environment:
+      POSTGRES_DB: teknofest
       POSTGRES_USER: teknofest
       POSTGRES_PASSWORD: teknofest
-      POSTGRES_DB: teknofest
     ports:
       - "5432:5432"
     volumes:
